@@ -20,6 +20,8 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 
+import java.text.SimpleDateFormat
+
 
 class NewsAdapter(internal var articles: List<Article>, private val context: Context) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
@@ -28,11 +30,29 @@ class NewsAdapter(internal var articles: List<Article>, private val context: Con
         val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.single_news_view, parent, false)
         return NewsViewHolder(view)
+
+
     }
+
+
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.title.text = articles[position].title
-        holder.date.text = articles[position].publishedAt //Date needs formatting.. perhaps in util class
+
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX")
+        val date =
+            dateFormat.parse(articles[position].publishedAt)//You will get date object relative to server/client timezone wherever it is parsed
+        val formatter =
+            SimpleDateFormat("dd-MM-yyyy - HH:mm") //If you need time just put specific format for time like 'HH:mm:ss'
+        val dateStr = formatter.format(date)
+        Log.d(TAG, "Date formatted: $dateStr")
+
+
+        Log.d(TAG, "DATO FRA JSON: "+articles[position].publishedAt)
+        holder.date.text = dateStr
+
+
+
 
         val photoUrl = articles[position].urlToImage
         Glide.with(context).load(photoUrl).into(holder.imageView) //Async the image recover?
@@ -80,8 +100,6 @@ class NewsAdapter(internal var articles: List<Article>, private val context: Con
     }
 
 
-    private fun fetchData() {
 
-    }
 }
 

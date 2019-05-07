@@ -1,5 +1,6 @@
 package com.example.adaptnews.model
 
+import androidx.databinding.BindingAdapter
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -32,5 +33,7 @@ class Article {
     @SerializedName("content")
     @Expose
     var content: String? = null
+
+
 
 }

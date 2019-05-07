@@ -20,6 +20,4 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     }
 
 
-
-
 }
