@@ -19,6 +19,8 @@ class NewsRepository(private val application: Application) {
     private val compositeDisposable = CompositeDisposable()
 
 
+
+    //RxJava implementation to get news async'd
     fun getMutableLiveData(): MutableLiveData<List<Article>> {
         if (mutableLiveData == null) {
             mutableLiveData = MutableLiveData()
@@ -26,7 +28,7 @@ class NewsRepository(private val application: Application) {
         val serviceApi = RetrofitClient.getClient("https://newsapi.org/v2/").create(NewsServiceApi::class.java)
         val disposable = serviceApi.fetchNews()
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()) //is network call allowed on mainThrread??
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { newsResponse ->
                     articles.setValue(newsResponse.articles)

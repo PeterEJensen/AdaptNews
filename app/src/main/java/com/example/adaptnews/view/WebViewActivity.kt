@@ -13,8 +13,6 @@ class WebViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_webview)
 
 
-
-        //use databinding for this class to comply with mvvm?
         val url = intent.getStringExtra("url") // get url from main activity
 
 
