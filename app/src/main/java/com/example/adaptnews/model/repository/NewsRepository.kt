@@ -19,7 +19,6 @@ class NewsRepository(private val application: Application) {
     private val compositeDisposable = CompositeDisposable()
 
 
-
     //RxJava implementation to get news async'd
     fun getMutableLiveData(): MutableLiveData<List<Article>> {
         if (mutableLiveData == null) {

@@ -34,7 +34,7 @@ class AdapterNews(internal var articles: List<Article>, private val context: Con
         viewHolder.date.text = dateStr
 
         val photoUrl = articles[position].urlToImage
-        Glide.with(context).load(photoUrl).into(viewHolder.image) //Async the image recover?
+        Glide.with(context).load(photoUrl).into(viewHolder.image)
 
 
 
@@ -55,6 +55,6 @@ class AdapterNews(internal var articles: List<Article>, private val context: Con
 
     }
 
-    override fun getLayout(): Int =  R.layout.single_news_view
+    override fun getLayout(): Int = R.layout.single_news_view
 
 }

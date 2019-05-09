@@ -35,5 +35,4 @@ class Article {
     var content: String? = null
 
 
-
 }

@@ -3,6 +3,7 @@ package com.example.adaptnews.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,11 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.adaptnews.R
 import com.example.adaptnews.adapter.AdapterNews
-import com.example.adaptnews.model.Article
 import com.example.adaptnews.viewmodel.MainActivityViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,20 +32,12 @@ class MainActivity : AppCompatActivity() {
         activityViewModel.allArticle.observe(this, Observer { articles ->
 
 
-            //groupie impl. These should be put in a for loop to check for all news in repo
+            //for loop to put articles in the recyclerview (groupie)
+            for (i in articles ) {
+                adapter.add(AdapterNews(articles, this@MainActivity))
+            }
 
-            adapter.add(AdapterNews(articles!!, this@MainActivity))
-            adapter.add(AdapterNews(articles!!, this@MainActivity))
-            adapter.add(AdapterNews(articles!!, this@MainActivity))
-            adapter.add(AdapterNews(articles!!, this@MainActivity))
-            adapter.add(AdapterNews(articles!!, this@MainActivity))
-            adapter.add(AdapterNews(articles!!, this@MainActivity))
-            adapter.add(AdapterNews(articles!!, this@MainActivity))
-            adapter.add(AdapterNews(articles!!, this@MainActivity))
-
-
-
-            recyclerView.adapter = adapter
+       recyclerView.adapter = adapter
 
         })
 
