@@ -1,6 +1,6 @@
 # AdaptNews
 
-Small project done for Adapt. Purpose of the project is to show different libraries and MVVM architecture in kotlin
+Small project using Newsapi. Purpose of the project is to show different libraries and MVVM architecture in kotlin
 
 ## Getting Started
 
